@@ -1,0 +1,62 @@
+<?php include 'view/inc/header.inc.php';?>
+    <div class="container">
+        <!-- form contains input fields for creating a new notification -->
+        <form method="post">
+            <input type="hidden" name="action" value="notification_create">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand"><h3>Create New Notification</h3></a>
+                </div>
+            </nav>
+            <br>
+
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" name="notification_name" class="form-control" required >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Type</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="notification_type" id="inlineRadio1" value="SMS" checked>
+                    <label class="form-check-label" for="inlineRadio1">SMS</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="notification_type" id="inlineRadio2" value="Email">
+                    <label class="form-check-label" for="inlineRadio2">Email</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <input type="text" name="notification_description" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Status</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="notification_status" id="inlineRadio1" value="Enabled" checked>
+                    <label class="form-check-label" for="inlineRadio1">Enabled</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="notification_status" id="inlineRadio2" value="Disabled">
+                    <label class="form-check-label" for="inlineRadio2">Disabled</label>
+                </div>
+            </div>
+<!-- action buttons: submit to create notifcation and cancel to go back to notifications page w/o making any changes -->
+            <div class="mb-3">
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-primary" href="?page=notifications" role="button">Cancel</a>
+            </div>
+        </form>
+        <br>
+
+        <footer>&copy; Copyright 2021 - </footer>
+        <script src=https://my.gblearn.com/js/loadscript.js></script>
+    </div>
+
+    <div>
+        <?php 
+        echo "<hr>";
+        show_source(__FILE__);
+        ?>
+    </div>
+</body>
+</html>

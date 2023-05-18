@@ -1,0 +1,66 @@
+<?php include 'view/inc/header.inc.php';
+?>
+<br>
+<div class="container">
+<br>
+<?php
+require 'model/database_mysqli.php';
+global $db_con;
+//get the event record by id for updating
+$id = $_GET['id'];
+$records = mysqli_query($db_con, "SELECT * FROM client_events WHERE event_id LIKE '$id'");
+while($data = mysqli_fetch_array($records))
+{
+
+?>
+<br>
+<div class="container">
+    <!-- form include populated fields for the selected event -->
+    <form method="post">
+        <input type="hidden" name="id" value="<?=$id?>">
+        <input type="hidden" name="action" value="event_update">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand"><h3>Update Event</h3></a>
+            </div>
+        </nav>
+        <br>
+
+        <div class="mb-3">
+            <label class="form-label">Client ID</label>
+            <input type="text" name="client_id" class="form-control" value="<?php echo $data['client_id'] ?>" placeholder="Enter New Client ID" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Notification ID</label>
+            <input type="text" name="notification_id" class="form-control" value="<?php echo $data['notification_id'] ?>" placeholder="Enter New Notification Id" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Start Time (yyyy-mm-dd hh:mm:ss)</label>
+            <input type="text" name="event_time_date" class="form-control" value="<?php echo $data['event_time_date'] ?>" placeholder="Enter New Start Time" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Frequency (days)</label>
+            <input type="text" name="event_frequency" class="form-control" value="<?php echo $data['event_frequency'] ?>" placeholder="Enter New Frequency" required >
+        </div>
+<!-- action buttons: submit to update event and cancel to go back to clients/events page w/o making any changes -->
+        <div class="mb-3">
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-primary" href="?page=clients" role="button">Cancel</a>
+        </div>
+    </form>
+    <br>
+<?php
+}?>
+
+<footer>&copy; Copyright 2021 - </footer>
+        <script src=https://my.gblearn.com/js/loadscript.js></script>
+    </div>
+
+    <div>
+        <?php 
+        echo "<hr>";
+        show_source(__FILE__);
+        ?>
+    </div>
+</body>
+</html>

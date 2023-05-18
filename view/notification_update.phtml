@@ -1,0 +1,65 @@
+<?php include 'view/inc/header.inc.php';
+
+require 'model/database_mysqli.php';
+global $db_con;
+//get the notification record by id for updating
+$id = $_GET['id'];
+$records = mysqli_query($db_con, "SELECT * FROM notifications WHERE notification_id LIKE '$id'");
+while($data = mysqli_fetch_array($records))
+{
+    ?>
+    <br>
+    <div class="container">
+        <!-- form include populated fields for the selected notification -->
+    <form method="post">
+        <input type="hidden" name="id" value="<?=$notification_id?>">
+        <input type="hidden" name="action" value="notification_update">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand"><h3>Update Notification</h3></a>
+            </div>
+        </nav>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" name="notification_name" class="form-control" value="<?php echo $data['notification_name'] ?>" placeholder="Enter New Notification Name" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Type</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="notification_type" id="inlineRadio1" value="SMS" checked>
+                <label class="form-check-label" for="inlineRadio1">SMS</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="notification_type" id="inlineRadio2" value="Email">
+                <label class="form-check-label" for="inlineRadio2">Email</label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <input type="text" name="notification_description" class="form-control" value="<?php echo $data['notification_description'] ?>" placeholder="Enter New Notification Description" required >
+        </div>
+        <!-- action buttons: submit to update notification and cancel to go back to notifications page w/o making any changes -->
+
+        <div class="mb-3">
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-primary" href="?page=notifications" role="button">Cancel</a>
+        </div>
+    </form>
+    <br>
+    <?php
+}
+ ?>
+
+<footer>&copy; Copyright 2021 - </footer>
+        <script src=https://my.gblearn.com/js/loadscript.js></script>
+    </div>
+
+    <div>
+        <?php 
+        echo "<hr>";
+        show_source(__FILE__);
+        ?>
+    </div>
+</body>
+</html>

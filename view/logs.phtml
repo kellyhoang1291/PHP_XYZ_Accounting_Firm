@@ -1,0 +1,69 @@
+<?php include 'view/inc/header.inc.php';
+require 'model/database_mysqli.php';
+?>
+<br>
+<?php global $msg; ?>
+<!-- display login info -->
+<div class="container">Welcome <?php echo $_SESSION["username"]?>
+<form method="POST" class="inline-form">
+     <input type="hidden" name="action" value="logout">
+     <button type='submit' name='logout'>Logout</button>
+</form>
+</div>
+
+<div class="container">
+    <!-- nav menu -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="?page=clients">Clients</a>
+                    <a class="nav-link" href="?page=notifications">Notifications</a>
+                    <a class="nav-link" href="?page=employees">Employees</a>
+                    <a class="nav-link active" aria-current="page" href="?page=logs">Activity Log</a>
+                    <a class="nav-link" href="?page=about_us">About Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <?php global $db_con; ?>
+     <!-- displaying data for each item -->
+    <table class="table table-wrapper">
+        <thead>
+            <tr>
+                <th scope="col">Employee ID</th>
+                <th scope="col">Module Name</th>
+                <th scope="col">Action</th>
+                <th scope="col">Datetime</th>
+                <th scope="col">IP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($logs as $log) : ?>
+                <tr>
+                    <td><?= $log['employee_id'] ?></td>
+                    <td><?= $log['module_name'] ?></td>
+                    <td><?= $log['action'] ?></td>
+                    <td><?= $log['date_time'] ?></td>
+                    <td><?= $log['ip'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <footer>&copy; Copyright 2021 - </footer>
+        <script src=https://my.gblearn.com/js/loadscript.js></script>
+    </div>
+
+    <div>
+        <?php 
+        echo "<hr>";
+        show_source(__FILE__);
+        ?>
+    </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?php include 'view/inc/header.inc.php';
+require 'model/database_mysqli.php';
+global $db_con;
+//get the employee record by id for updating
+$id = $_GET['id'];
+$records = mysqli_query($db_con, "SELECT * FROM employees WHERE employee_id LIKE '$id'");
+while($data = mysqli_fetch_array($records))
+{
+
+?>
+<br>
+<div class="container">
+    <!-- form include populated fields for the selected employee -->
+    <form method="post">
+        <input type="hidden" name="id" value="<?=$id?>">
+        <input type="hidden" name="action" value="employee_update">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand"><h3>Update Employee</h3></a>
+            </div>
+        </nav>
+        <br>
+
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" name="employee_first_name" class="form-control" value="<?php echo $data['employee_first_name'] ?>" placeholder="Enter Employee's First Name" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" name="employee_last_name" class="form-control" value="<?php echo $data['employee_last_name'] ?>" placeholder="Enter Employee's Last Name" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" name="employee_email" class="form-control" value="<?php echo $data['employee_email'] ?>" placeholder="Enter Employee's Email" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cell Number</label>
+            <input type="text" name="employee_cell_number" class="form-control" value="<?php echo $data['employee_cell_number'] ?>" placeholder="Enter Employee's Cell Number" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Position</label>
+            <input type="text" name="employee_position" class="form-control" value="<?php echo $data['employee_position'] ?>" placeholder="Enter Employee's Position" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="employee_password" class="form-control" value="<?php echo $data['employee_password'] ?>" placeholder="Enter Employee's Password" required >
+        </div>
+        <!-- action buttons: submit to update employee and cancel to go back to employees page w/o making any changes -->
+
+        <div class="mb-3">
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-primary" href="?page=employees" role="button">Cancel</a>
+        </div>
+    </form>
+    <br>
+<?php
+}?>
+
+<footer>&copy; Copyright 2021 - </footer>
+        <script src=https://my.gblearn.com/js/loadscript.js></script>
+    </div>
+
+    <div>
+        <?php 
+        echo "<hr>";
+        show_source(__FILE__);
+        ?>
+    </div>
+</body>
+</html>

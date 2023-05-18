@@ -1,0 +1,73 @@
+<?php include 'view/inc/header.inc.php';
+?>
+<br>
+
+<body>
+<?php global $msg; ?>
+<!-- display login info -->
+<div class="container">Welcome <?php echo $_SESSION["username"]?>
+<form method="POST" class="inline-form">
+     <input type="hidden" name="action" value="logout">
+     <button type='submit' name='logout'>Logout</button>
+</form>
+</div>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="?page=clients">Clients</a>
+                    <a class="nav-link" href="?page=notifications">Notifications</a>
+                    <a class="nav-link" href="?page=employees">Employees</a>
+                    <a class="nav-link" href="?page=logs">Activity Log</a>
+                    <a class="nav-link active" aria-current="page" href="?page=about_us">About Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Student Id</th>
+        <th scope="col">GBLearn URL</th>
+        <th scope="col">Email Address</th>
+        <th scope="col">Task Completed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <th scope="row">101306676</th>
+        <td>https://f1306676.gblearn.com/</td>
+        <td>phuong.hoang2@georgebrown.ca</td>
+        <td>View functions, Create functions, Review code, Merge Code</td>
+        </tr>
+        <tr>
+        <th scope="row">101278278 </th>
+        <td>https://f1278278.gblearn.com/</td>
+        <td>gustavo.mendespinto@georgebrown.ca</td>
+        <td>Database</td>
+        </tr>
+        <tr>
+        <th scope="row">101091286 </th>
+        <td>https://f1091286.gblearn.com/</td>
+        <td>feriel.maamer@georgebrown.ca</td>
+        <td>Update functions</td>
+        </tr>
+        <tr>
+        <th scope="row">101347618 </th>
+        <td>https://f1347618.gblearn.com/</td>
+        <td>mahmoud.farghali@georgebrown.ca</td>
+        <td>Login function</td>
+        </tr>
+    </tbody>
+    </table>
+
+    <footer>&copy; Copyright 2021 </footer>
+    <script src=https://my.gblearn.com/js/loadscript.js></script>
+</div>
+</body>
+</html>

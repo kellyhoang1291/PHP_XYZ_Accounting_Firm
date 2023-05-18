@@ -1,0 +1,55 @@
+<?php include 'view/inc/header.inc.php';
+require 'model/database_mysqli.php';
+?>
+
+<div class="container">
+    <br>
+    <a class="btn btn-sm btn-primary" href="?page=event_create" role="button"><i class="fa fa-plus"></i> Add New Event</a>
+    <br>
+
+    <?php global $db_con; ?>
+     <!-- displaying data for each item -->
+    <table class="table table-wrapper">
+        <thead>
+            <tr>
+                <th scope="col">Event ID </th>
+                <th scope="col">Client Name</th>
+                <th scope="col">Notification Name</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">Frequency</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($events as $event) : ?>
+                <tr>
+                    <td><?= $event['event_id'] ?></td>
+                    <td><?= $event['client_name'] ?></td>
+                    <td><?= $event['notification_name'] ?></td>
+                    <td><?= $event['event_time_date'] ?></td>
+                    <td><?= $event['event_frequency'] ?></td>
+                    <td><?= $event['event_status'] ?></td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="?page=event_update&id=<?= $event['event_id'] ?>" role="button">Update</a>
+                        <!-- update status -->
+                        <?php include 'view/event_status_change.phtml' ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <script src=https://my.gblearn.com/js/loadscript.js></script>
+    </div>
+
+    <div>
+        <?php 
+        echo "<hr>";
+        show_source(__FILE__);
+        ?>
+    </div>
+</body>
+</html>
+
+

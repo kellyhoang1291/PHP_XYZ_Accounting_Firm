@@ -1,0 +1,83 @@
+<?php include 'view/inc/header.inc.php';
+require 'model/database_mysqli.php';
+global $db_con;
+
+//get the client record by id for updating
+$id = $_GET['id'];
+$records = mysqli_query($db_con, "SELECT * FROM clients WHERE client_id LIKE '$id'");
+while($data = mysqli_fetch_array($records))
+{
+
+?>
+<br>
+<div class="container">
+    <!-- form include populated fields for the selected client -->
+    <form method="post">
+        <input type="hidden" name="id" value="<?=$id?>">
+        <input type="hidden" name="action" value="client_update">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand"><h3>Update Client</h3></a>
+            </div>
+        </nav>
+        <br>
+
+        <div class="mb-3">
+            <label class="form-label">Company Name</label>
+            <input type="text" name="company_name" class="form-control" value="<?php echo $data['company_name'] ?>" placeholder="Enter New Company Name" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Business Number</label>
+            <input type="text" name="business_number" class="form-control" value="<?php echo $data['business_number'] ?>" placeholder="Enter New Business Number" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" name="client_first_name" class="form-control" value="<?php echo $data['client_first_name'] ?>" placeholder="Enter New First Name" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" name="client_last_name" class="form-control" value="<?php echo $data['client_last_name'] ?>" placeholder="Enter New Last Name" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="text" name="client_phone_number" class="form-control" value="<?php echo $data['client_phone_number'] ?>" placeholder="Enter New Phone Number" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cell Number</label>
+            <input type="text" name="client_cell_number" class="form-control" value="<?php echo $data['client_cell_number'] ?>" placeholder="Enter New Cell Number" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Carrier</label>
+            <input type="text" name="carrier" class="form-control" value="<?php echo $data['carrier'] ?>" placeholder="Enter New Carrier" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">HST Number</label>
+            <input type="text" name="hst_number" class="form-control" value="<?php echo $data['hst_number'] ?>" placeholder="Enter New HST Number" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Website</label>
+            <input type="text" name="website" class="form-control" value="<?php echo $data['website'] ?>" placeholder="Enter New Website" required >
+        </div>
+<!-- action buttons: submit to update client and cancel to go back to clients page w/o making any changes -->
+        <div class="mb-3">
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-primary" href="?page=clients" role="button">Cancel</a>
+        </div>
+    </form>
+    <br>
+<?php
+}
+?> 
+
+<footer>&copy; Copyright 2021 - </footer>
+        <script src=https://my.gblearn.com/js/loadscript.js></script>
+    </div>
+
+    <div>
+        <?php 
+        echo "<hr>";
+        show_source(__FILE__);
+        ?>
+    </div>
+</body>
+</html>

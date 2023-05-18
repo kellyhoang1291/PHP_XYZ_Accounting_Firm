@@ -1,0 +1,10 @@
+<!-- client update status form -->
+<form method="post" class="inline-form">
+    <input type="hidden" name="id" value="<?=$client["client_id"]?>">
+    <input type="hidden" name="status" value="<?=$client["client_status"]?>">
+    <button type="submit" name="action" value="client_status" class="btn btn-sm btn-danger" onClick="javascript: return confirm('Do you want to change the status of this client?');">
+        Change Status
+    </button>
+</form>
+
+

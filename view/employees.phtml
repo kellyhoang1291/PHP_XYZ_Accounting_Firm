@@ -1,0 +1,82 @@
+<?php include 'view/inc/header.inc.php';
+require 'model/database_mysqli.php';
+?>
+<br>
+<?php global $msg; ?>
+<!-- display login info -->
+<div class="container">Welcome <?php echo $_SESSION["username"]?>
+<form method="POST" class="inline-form">
+     <input type="hidden" name="action" value="logout">
+     <button type='submit' name='logout'>Logout</button>
+</form>
+</div>
+
+<div class="container">
+    <!-- nav menu -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="?page=clients">Clients</a>
+                    <a class="nav-link" href="?page=notifications">Notifications</a>
+                    <a class="nav-link active" aria-current="page" href="?page=employees">Employees</a>
+                    <a class="nav-link" href="?page=logs">Activity Log</a>
+                    <a class="nav-link" href="?page=about_us">About Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <a class="btn btn-sm btn-primary" href="?page=employee_create" role="button"><i class="fa fa-plus"></i> Add New Employee</a>
+    <br>
+
+    <?php global $db_con; ?>
+     <!-- displaying data for each item -->
+    <table class="table table-wrapper">
+        <thead>
+            <tr>
+                <th scope="col">Employee ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Cell Number</th>
+                <th scope="col">Position</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($employees as $employee) : ?>
+                <tr>
+                    <td><?= $employee['employee_id'] ?></td>
+                    <td><?= $employee['employee_first_name'] ?></td>
+                    <td><?= $employee['employee_last_name'] ?></td>
+                    <td><?= $employee['employee_email'] ?></td>
+                    <td><?= $employee['employee_cell_number'] ?></td>
+                    <td><?= $employee['employee_position'] ?></td>
+                    <td><?= $employee['employee_status'] ?></td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="?page=employee_update&id=<?= $employee['employee_id'] ?>" role="button">Update</a>
+                        <!-- update status -->
+                        <?php include 'view/employee_status_change.phtml' ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <footer>&copy; Copyright 2021 - </footer>
+        <script src=https://my.gblearn.com/js/loadscript.js></script>
+    </div>
+
+    <div>
+        <?php 
+        echo "<hr>";
+        show_source(__FILE__);
+        ?>
+    </div>
+</body>
+</html>

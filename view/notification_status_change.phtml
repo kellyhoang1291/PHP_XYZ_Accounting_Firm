@@ -1,0 +1,10 @@
+<!-- notification update status form -->
+<form method="post" class="inline-form">
+    <input type="hidden" name="id" value="<?=$notification["notification_id"]?>">
+    <input type="hidden" name="status" value="<?=$notification["notification_status"]?>">
+    <button type="submit" name="action" value="notification_status" class="btn btn-sm btn-danger" onClick="javascript: return confirm('Do you want to change the status of this notification?');">
+        Change Status
+    </button>
+</form>
+
+

@@ -1,0 +1,79 @@
+<?php include 'view/inc/header.inc.php';?>
+<div class="container"> 
+    <!-- form contains input fields for creating a new client -->
+    <form method="post">
+        <input type="hidden" name="action" value="client_create">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand"><h3>Create New Client</h3></a>
+            </div>
+        </nav>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Company Name</label>
+            <input type="text" name="company_name" class="form-control" required >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Business Number</label>
+            <input type="text" name="business_number" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" name="client_first_name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" name="client_last_name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="text" name="client_phone_number" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cell Number</label>
+            <input type="text" name="client_cell_number" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Carrier</label>
+            <input type="text" name="carrier" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">HST Number</label>
+            <input type="text" name="hst_number" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Website</label>
+            <input type="text" name="website" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Status</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="client_status" id="inlineRadio1" value="Active" checked>
+                <label class="form-check-label" for="inlineRadio1">Active</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="client_status" id="inlineRadio2" value="Inactive">
+                <label class="form-check-label" for="inlineRadio2">Inactive</label>
+            </div>
+        </div>
+
+        <!-- action buttons: submit to create client and cancel to go back to clients page w/o making any changes -->
+        <div class="mb-3">
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-primary" href="?page=clients" role="button">Cancel</a>
+        </div>
+    </form>
+<br>
+
+<footer>&copy; Copyright 2021 - </footer>
+        <script src=https://my.gblearn.com/js/loadscript.js></script>
+    </div>
+
+    <div>
+        <?php 
+        echo "<hr>";
+        show_source(__FILE__);
+        ?>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<?php include 'view/inc/header.inc.php';
+require 'model/database_mysqli.php';
+
+?>
+    <div class="container">
+           <!-- form contains input fields for creating a new event -->
+        <form method="post">
+            <input type="hidden" name="action" value="event_create">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand"><h3>Create New Event</h3></a>
+                </div>
+            </nav>
+            <br>
+
+            <div class="mb-3">
+                <label class="form-label">Client ID</label>
+                <input type="text" name="client_id" class="form-control" required >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Notification ID</label>
+                <input type="text" name="notification_id" class="form-control" required >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Start Time (yyyy-mm-dd hh:mm:ss)</label>
+                <input type="text" name="event_time_date" class="form-control" required >
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Event Frequency (days)</label>
+                <input type="number" name="event_frequency" class="form-control" required >
+            </div>
+
+            <div class="mb-3">
+            <label class="form-label">Status</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="event_status" id="inlineRadio1" value="Active" checked>
+                <label class="form-check-label" for="inlineRadio1">Active</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="event_status" id="inlineRadio2" value="Inactive">
+                <label class="form-check-label" for="inlineRadio2">Inactive</label>
+            </div>
+        </div>
+<!-- action buttons: submit to create event and cancel to go back to clients/events page w/o making any changes -->
+            <div class="mb-3">
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-primary" href="?page=clients" role="button">Cancel</a>
+            </div>
+        </form>
+        <br>
+
+        <footer>&copy; Copyright 2021 - </footer>
+        <script src=https://my.gblearn.com/js/loadscript.js></script>
+    </div>
+
+    <div>
+        <?php 
+        echo "<hr>";
+        show_source(__FILE__);
+        ?>
+    </div>
+</body>
+</html>
